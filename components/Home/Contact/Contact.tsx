@@ -30,7 +30,8 @@ const Contact = () => {
       setMobile('');
       setMessage('');
     } else {
-      setStatus('Failed to send message.');
+      const errorData = await res.json();
+      setStatus(`Failed to send message: ${errorData.error || 'Unknown error'}`);
     }
   };
 

@@ -1,35 +1,34 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
-  const { name, email, message, mobile } = await req.json();
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
-    },
-  });
-
-  const mailOptions = {
-    from: process.env.GMAIL_USER,
-    to: 'kirrinath@gmail.com',
-    subject: `New message from ${name}`,
-    text: `
-      Name: ${name}
-      Email: ${email}
-      Mobile: ${mobile}
-      Message: ${message}
-    `,
-  };
-
   try {
-    await transporter.sendMail(mailOptions);
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ success: false }, { status: 500 });
+    const { name, email, message, mobile } = await req.json();
+
+    const { data, error } = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>', // You should update this to your verified domain later
+      to: ['kirrinath@gmail.com'],
+      subject: `New message from ${name}`,
+      text: `
+        Name: ${name}
+        Email: ${email}
+        Mobile: ${mobile}
+        Message: ${message}
+      `,
+    });
+
+    if (error) {
+      console.error('Resend Error:', error);
+      return NextResponse.json({ success: false, error: error.message || 'Unknown Resend error' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, data });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Internal Server Error';
+    console.error('Unexpected Error:', error);
+    return NextResponse.json({ success: false, error: message }, { status: 500 });
   }
 }

@@ -12,7 +12,7 @@ const Projects = () => {
             <div data-aos="fade-up" data-aos-anchor-placement="top-center"  
             >
                 <Image
-                src="/images/p1.jpg"
+                src="/images/chandaimg.png"
                 alt="img"
                 width={800}
                 height={650}
@@ -20,16 +20,18 @@ const Projects = () => {
  
                 />
                 <h1 className="mt-4 text-xl sm:text-2xl font-semibold text-white">
-                    Modern Finance
+                    Ganesh Chanda Application
                 </h1>
-                <h1 className="pt-2 font-medium text-white/80">APPs,UI/UX</h1>
+                <h1 className="pt-2 font-medium text-white/80">Next,Node,Express,MySql</h1>
             </div>
+
+
 
 
             {/* Secound Project */}
             <div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="100">
                 <Image
-                src="/images/p2.jpg"
+                src="/images/Diceimg.png"
                 alt="img"
                 width={800}
                 height={650}
@@ -37,16 +39,16 @@ const Projects = () => {
  
                 />
                 <h1 className="mt-4 text-xl sm:text-2xl font-semibold text-white">
-                    Modern Finance
+                    Dice Game Application
                 </h1>
-                <h1 className="pt-2 font-medium text-white/80">APPs,UI/UX</h1>
+                <h1 className="pt-2 font-medium text-white/80">React</h1>
             </div>
 
 
             {/* Third Project */}
              <div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="200">
                 <Image
-                src="/images/p3.jpg"
+                src="/images/feedbackimg.png"
                 alt="img"
                 width={800}
                 height={650}
@@ -54,9 +56,9 @@ const Projects = () => {
  
                 />
                 <h1 className="mt-4 text-xl sm:text-2xl font-semibold text-white">
-                    Modern Finance
+                    Feedbackform Application
                 </h1>
-                <h1 className="pt-2 font-medium text-white/80">APPs,UI/UX</h1>
+                <h1 className="pt-2 font-medium text-white/80">React,Node,Mysql,Express</h1>
             </div>
 
 
@@ -64,7 +66,7 @@ const Projects = () => {
               {/* Fourth Project */}
                 <div data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-delay="300">
                 <Image
-                src="/images/p4.jpg"
+                src="/images/shoppingimg.png"
                 alt="img"
                 width={800}
                 height={650}
@@ -72,9 +74,9 @@ const Projects = () => {
  
                 />
                 <h1 className="mt-4 text-xl sm:text-2xl font-semibold text-white">
-                    Modern Finance
+                    Shooing Application
                 </h1>
-                <h1 className="pt-2 font-medium text-white/80">APPs,UI/UX</h1>
+                <h1 className="pt-2 font-medium text-white/80">HTML,CSS,JavaScrit,React</h1>
             </div>
         </div>
     </div >

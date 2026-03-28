@@ -124,7 +124,13 @@ const AboutMe = () => {
             a difference.
           </p>
 
-          <button data-aos="fade-right" data-aos-anchor-placement="top-center"  className="px-8 py-3 rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 font-medium">
+          <button data-aos="fade-right" data-aos-anchor-placement="top-center"  className="px-8 py-3 rounded-lg bg-blue-800 hover:bg-blue-900 transition-all duration-300 font-medium"  onClick={() => {
+    const el = document.getElementById("contactme");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+>
             Get in Touch
           </button>
         </div>

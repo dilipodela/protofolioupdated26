@@ -75,23 +75,39 @@ type Props = {
 
 const Nav = ({ onav }: Props) => {
   const [navbg, setnavbg] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Scroll effect for navbar background
+  // Scroll effect for navbar background and visibility
   useEffect(() => {
     const handler = () => {
-      if (window.scrollY >= 90) setnavbg(true);
+      const currentScrollY = window.scrollY;
+      
+      // Control background color change
+      if (currentScrollY >= 90) setnavbg(true);
       else setnavbg(false);
+
+      // Control show/hide based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setVisible(false);
+      } else {
+        // Scrolling up
+        setVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <div
-      className={`transition-all duration-200 h-[12vh] z-[10000] fixed w-full ${
+      className={`transition-all duration-500 ease-in-out h-[12vh] z-[10000] fixed w-full ${
         navbg ? 'bg-[#0f142ed9] shadow-md' : ''
-      }`}
+      } ${visible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="flex items-center h-full justify-between w-[90%] mx-auto">
         {/* logo */}
