@@ -78,8 +78,10 @@ export default function ParticlesHero() {
 
   if (!init) return null;
 
+  const ParticlesComponent = Particles as any;
+
   return (
-    <Particles
+    <ParticlesComponent
       id="tsparticles"
       particlesLoaded={particlesLoaded}
       options={options}
