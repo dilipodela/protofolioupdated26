@@ -14,11 +14,14 @@ const Home = () => {
       duration: 1000,
       easing: "ease",
       once: true,
+      offset: 120,
       anchorPlacement: "top-bottom",
     });
     
-    // Refresh AOS to ensure all elements are captured
-    AOS.refresh();
+    // Refresh AOS to ensure all elements are captured after rendering
+    setTimeout(() => {
+      AOS.refresh();
+    }, 500);
   }, []);
 
   return (
